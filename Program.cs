@@ -4,25 +4,29 @@ class Program
 {
     static void Main()
     {
-        int[] array = new int[14];
-        int Count = 0; 
-        Console.WriteLine("Введите 14 целых чисел:");
-
-        for (int i = 0; i < 14; i++)
-        {
-            Console.Write($"Элемент {i + 1}: ");
-            array[i] = int.Parse(Console.ReadLine());
-
-            if (array[i] % 2 == 0) 
-                Count++;
-        }
-
-        Console.WriteLine("\nВведённый массив:");
-        Console.WriteLine(string.Join(" ", array));
-
+        Random rand = new Random();
+        int[] array = new int[9]; 
+        int Count = 0, oddCount = 0; 
+        Console.WriteLine("Сгенерированный массив:");
         
-        Console.WriteLine($"Количество чётных элементов: {Count}");
-        Console.ReadLine();
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = rand.Next(-50, 50); 
+            Console.Write(array[i] + " ");
+
+            if (array[i] % 2 == 0)
+                Count++;
+            else
+                oddCount++;
+        }
+        Console.WriteLine($"\nЧетных элементов: {Count}, Нечетных элементов: {oddCount}");
+
+        if (Count > oddCount)
+            Console.WriteLine("Четных чисел больше.");
+        else if (oddCount > Count)
+            Console.WriteLine("Нечетных чисел больше.");
+        else
+            Console.WriteLine("Четных и нечетных чисел поровну.");
+        Console.ReadKey();
     }
 }
-
